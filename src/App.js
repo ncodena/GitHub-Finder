@@ -1,12 +1,20 @@
 import React from 'react';
+import Navbar from './layouts/Navbar';
+import Users from './components/users/Users';
 import './App.css';
 
-function App() {
+class App extends React.Component {
+  render() {
   return (
-    <div className="App">
-     <h1>Hello from React</h1>
-    </div>
-  );
+      <div className="App">
+        <Navbar icon='fab fa-github' title='GitHub Finder'/>
+        <div className="container">
+          <Users/>
+        </div>
+        
+      </div>
+    );
+  }
 }
 
 export default App;
