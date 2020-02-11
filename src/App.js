@@ -17,14 +17,6 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
 
-  // state = {
-  //   users: [],
-  //   user: {},
-  //   repos: [],
-  //   loading: false,
-  //   alert: null
-  // };
-
   //Search GitHub users
 
   const searchUsers = async text => {
@@ -72,11 +64,10 @@ const App = () => {
     {process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=$
     {process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
 
-    this.setState({repos: res.data, loading: false});
+    // this.setState({repos: res.data, loading: false});
 
     setRepos(res.data)
     setLoading(false);
-
 
   }
 
@@ -91,8 +82,6 @@ const App = () => {
     setTimeout(() => setAlert(null), 5000)
   };
 
-
-  // const {users, user, loading, repos, alert} = this.state;
   return (
     <Router>
       <div className="App">
@@ -105,7 +94,7 @@ const App = () => {
                 <Search 
                 searchUsers={searchUsers} 
                 clearUsers={clearUsers} 
-                showClear={length > 0 ? true: false}
+                showClear={users.length > 0 ? true: false}
                 setAlert={showAlert} />
                 <Users loading={loading} users={users}/>
               </Fragment>
