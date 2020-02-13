@@ -9,7 +9,7 @@ import User from './components/users/User';
 import axios from 'axios';
 import './App.css';
 
-import GitHubState from './context/github/GithubState';
+import GithubState from './context/github/GithubState';
 
 const App = () => {
 
@@ -19,23 +19,7 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
 
-  //Search GitHub users
 
-  const searchUsers = async text => {
-
-    setLoading(true);
-
-    const res = await axios.get(`https://api.github.com/search/users?q=${text}&client_id=$
-    {process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=$
-    {process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
-
-    // this.setState({users: res.data.items, loading: false});
-
-    setUsers(res.data.items);
-    setLoading(false);
-
-    console.log(res.data.items)
-  }
 
   // Search a single GitHub user
 
@@ -95,7 +79,7 @@ const App = () => {
             <Route exact path= '/' render={props =>
               <Fragment>
                 <Search 
-                searchUsers={searchUsers} 
+          
                 clearUsers={clearUsers} 
                 showClear={users.length > 0 ? true: false}
                 setAlert={showAlert} />
